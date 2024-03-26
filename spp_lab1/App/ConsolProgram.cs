@@ -9,12 +9,14 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Diagnostics;
 using Lab1.Tracer.serializer.ClassSerializer;
+using System.Collections.Concurrent;
 
 namespace Lab1.LConsole
 {
     class Program
     {
         private static readonly Fun fun = new Fun();
+        public static ConcurrentDictionary<int,Thread> funThread = new ConcurrentDictionary<int,Thread>();
         
 
         public static void Main()
@@ -22,11 +24,12 @@ namespace Lab1.LConsole
             var thread1 = new Thread(fun.Fun1);
             var thread2 = new Thread(fun.Fun2);
 
-            thread1.Start();
-            thread2.Start();
-
-            thread1.Join();
-            thread2.Join();
+            funThread.TryAdd(0, thread1);
+            funThread.TryAdd(1, thread2);
+            funThread[0].Start();
+            funThread[1].Start();
+            funThread[0].Join();
+            funThread[1].Join();
 
 
             fun.Fun3(4);
@@ -34,17 +37,17 @@ namespace Lab1.LConsole
             var traceResult = fun.tracer.getTraceResult();
 
             Console.WriteLine("XML:");
-            xml xmlSerializ = new xml();
-            string messageXml = xmlSerializ.serialize(traceResult);
-            Console.WriteLine(messageXml);
-            File.WriteAllText("trace.xml", messageXml);
+            xml xmlSer = new xml();
+            string XmlFile = xmlSer.serialize(traceResult);
+            Console.WriteLine(XmlFile);
+            File.WriteAllText("trace.xml", XmlFile);
             Console.WriteLine();
 
             Console.WriteLine("JSON:");
-            json jsonSerializ = new json();
-            string messageJson = jsonSerializ.serialize(traceResult);
-            Console.WriteLine(messageJson);
-            File.WriteAllText("trace.json", messageJson);
+            json jsonSer = new json();
+            string JsonFile = jsonSer.serialize(traceResult);
+            Console.WriteLine(JsonFile);
+            File.WriteAllText("trace.json", JsonFile);
         }
     }
 }
