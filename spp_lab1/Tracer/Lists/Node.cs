@@ -20,6 +20,8 @@ namespace Lab1.Tracer
             methodName = MethodName;
             className = ClassName;
         }
+
+        //добавление дочернего узла
         public void addNode(Node newNode)
         {
             Node curNode = this;
@@ -41,6 +43,7 @@ namespace Lab1.Tracer
             newNode.parent = curNode;
         }
 
+        //поиск корневого узла
         public Node root()
         {
             Node curNode = this;
@@ -50,6 +53,8 @@ namespace Lab1.Tracer
             }
             return curNode;
         }
+
+        //получение времени работы метода
         public long ResultTime()
         {
             return timer.ElapsedMilliseconds;

@@ -17,7 +17,8 @@ namespace Lab1.Tracer
         {
             this.id = id;
         }
-
+        
+        //получение времени работы потока
         public void getTrheadTime()
         {
             long Ttime = 0;
@@ -31,13 +32,17 @@ namespace Lab1.Tracer
 
     public class TraceResult
     {
+        //список корневых узлов
         public List<TThread> rootList = new List<TThread>();
+
+        //получение списка корневых узлов
         public void getRootList(List<ThreadList> nodeList)
         {
             foreach (ThreadList list in nodeList)
             {
                 foreach(Node node in list.funNodes) 
                 {
+                    //поиск корневого узла
                     if (node.parent == null) 
                     {
                         var targetThread = rootList.FirstOrDefault(t => t.id == list.threadId);

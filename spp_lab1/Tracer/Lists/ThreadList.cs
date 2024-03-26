@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab1.Tracer
 {
+    //класс хранящий узлы потока и id потока
     public class ThreadList
     {
         public int threadId;
