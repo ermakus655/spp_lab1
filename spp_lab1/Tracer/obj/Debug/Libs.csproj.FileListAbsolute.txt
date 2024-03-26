@@ -1,0 +1,6 @@
+C:\Users\Дмитрий\Desktop\Tracer\bin\Debug\Tracer.dll
+C:\Users\Дмитрий\Desktop\Tracer\bin\Debug\Tracer.pdb
+C:\Users\Дмитрий\Desktop\Tracer\obj\Debug\Libs.csproj.AssemblyReference.cache
+C:\Users\Дмитрий\Desktop\Tracer\obj\Debug\Libs.csproj.CoreCompileInputs.cache
+C:\Users\Дмитрий\Desktop\Tracer\obj\Debug\Tracer.dll
+C:\Users\Дмитрий\Desktop\Tracer\obj\Debug\Tracer.pdb
